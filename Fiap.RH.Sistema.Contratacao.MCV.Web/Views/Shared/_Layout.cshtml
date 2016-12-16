@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>FIAP - @ViewBag.Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/vendor.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/flat-admin.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/meu.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    
+
+</head>
+<body>
+    <div class="app app-default">
+        <aside class="app-sidebar" id="sidebar" style="position:fixed;">
+            <div class="sidebar-header">
+                <a class="sidebar-brand" href="#"><img src="~/Content/images/FiapLogo.png" /></a>
+
+                <button type="button" class="sidebar-toggle">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-menu">
+                <ul class="sidebar-nav">
+                    <!--Dados gerais-->
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <div class="icon">
+                                <i class="fa fa-tasks" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Dados Gerais</div>
+                        </a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Dados Gerais</li>
+                                <li>@Html.ActionLink("Cursos", "Listar", "Curso")</li>
+                                <li>@Html.ActionLink("Habilidades", "Listar", "Habilidade")</li>
+                                <li>@Html.ActionLink("Perfil Profissional", "Listar", "Perfil")</li>
+                                <li>@Html.ActionLink("Unidades", "Listar", "Unidade")</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!--Fábricas-->
+                    <li>
+                        <a href='@Url.Action("Listar", "Fabrica")'>
+                            <div class="icon">
+                                <i class="fa fa-cubes" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">
+                                Fábrica
+                            </div>
+                        </a>
+                    </li>
+                    <!--Candidatos-->
+                    <li>
+                        <a href='@Url.Action("Listar", "Candidato")'>
+                            <div class="icon">
+                                <i class="fa fa-group" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Candidatos</div>
+                        </a>
+                    </li>
+                    <!--Aulas-->
+                    <li>
+                        <a href='@Url.Action("Listar", "Aula")'>
+                            <div class="icon">
+                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Aulas</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--Footer Sidebar-->
+            <div class="sidebar-footer">
+            </div>
+        </aside>
+        <script type="text/ng-template" id="sidebar-dropdown.tpl.html">
+            <div class="dropdown-background">
+                <div class="bg"></div>
+            </div>
+            <div class="dropdown-container">
+                {{list}}
+            </div>
+        </script>
+        <div class="app-container">
+            <nav class="navbar navbar-default" id="navbar">
+                <div class="container-fluid">
+                    <div class="navbar-collapse collapse in">
+                        <ul class="nav navbar-nav navbar-mobile">
+                            <li>
+                                <button type="button" class="sidebar-toggle">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </li>
+                            <li class="logo">
+                                <a class="navbar-brand" href="#"><img src="~/Content/images/FiapLogo.png" /></a>
+                            </li>
+                            <li>
+                                <button type="button" class="navbar-toggle">
+                                    <i class="fa fa-user"></i>
+                                </button>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="navbar-title"><span class="highlight">@ViewBag.TitleMenu</span></li>
+                            <li class="navbar-search hidden-sm">
+                                <input id="search" type="text" placeholder="Search..">
+                                <button class="btn-search"><i class="fa fa-search"></i></button>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown profile">
+                                <a href="/html/pages/profile.html" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-user"></i>
+                                    <div class="title">Profile</div>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="profile-info">
+                                        <h4 class="username">Scott White</h4>
+                                    </div>
+                                    <ul class="action">
+                                        <li>
+                                            <a href="#">
+                                                Setting
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/vendor.js"></script>
+    
+    <script type="text/javascript" src="~/Scripts/app.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    @RenderSection("scripts", false)
+</body>
+</html>

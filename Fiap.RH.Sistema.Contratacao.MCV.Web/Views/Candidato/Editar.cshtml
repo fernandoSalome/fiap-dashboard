@@ -1,0 +1,114 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.CandidatoViewModel
+
+@{ 
+    ViewBag.Title = "Editar Candidato";
+}
+
+<h2>Atualizar Candidato</h2>
+
+@Html.ValidationSummary()
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(a => a.Id)
+    <div class="form-group">
+        @Html.LabelFor(a => a.Nome)
+        @Html.TextBoxFor(a => a.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Nome)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.Publico)
+        @Html.CheckBoxFor(a => a.Publico)
+        @Html.ValidationMessageFor(a => a.Publico)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.Email)
+        @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Email)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.Residencial)
+        @Html.TextBoxFor(a => a.Residencial, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Residencial)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.Celular)
+        @Html.TextBoxFor(a => a.Celular, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Celular)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.Cv)
+        @Html.CheckBoxFor(a => a.Cv)
+        @Html.ValidationMessageFor(a => a.Celular)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.Confirmacao)
+        @Html.CheckBoxFor(a => a.Confirmacao)
+        @Html.ValidationMessageFor(a => a.Confirmacao)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.ProvaTecnica)
+        @Html.CheckBoxFor(a => a.ProvaTecnica)
+        @Html.ValidationMessageFor(a => a.ProvaTecnica)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.Nota)
+        @Html.TextBoxFor(a => a.Nota, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Nota)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.Rm)
+        @Html.TextBoxFor(a => a.Rm, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Rm)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.UnidadeId)
+        @Html.DropDownListFor(a => a.UnidadeId,
+                Model.UnidadeSelectList, "Selecione",
+                new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.UnidadeId)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.FabricaId)
+        @Html.DropDownListFor(a => a.FabricaId,
+                Model.FabricaSelectList, "Selecione",
+                new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.FabricaId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.CursoId)
+        @Html.DropDownListFor(a => a.CursoId,
+                Model.CursoSelectList, "Selecione",
+                new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.CursoId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.PerfilId)
+        @Html.DropDownListFor(a => a.PerfilId,
+                Model.PerfilSelectList, "Selecione",
+                new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.PerfilId)
+    </div>
+
+    <div class="form-group">
+        @Helper.Submit("Atualizar", "btn btn-primary")
+    </div>
+}
+

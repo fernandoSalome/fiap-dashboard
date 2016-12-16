@@ -1,0 +1,312 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.FabricaViewModel
+
+@{
+    ViewBag.Title = "Estatísticas";
+    ViewBag.TitleMenu = "Fábrica";
+}
+
+<!--ADICIONAR BOTÃO DE IMPRESSÃO-->
+<div class="col-xs-12">
+    <div class="card">
+        <div class="card-header" style="padding: 10px 20px; flex-direction: row; display: flex; justify-content: space-between; align-items: flex-end;">
+            <h2>Estatísticas</h2>
+            <button type="button" class="btn btn-primary btn-xs" style="margin-bottom: 10px;" onclick="window.print();" id="Printbutton">Imprimir</button>
+        </div>
+        <div class="card-body">
+            <h3>Estatisticas @Model.Nome</h3>
+        </div>
+    </div>
+</div>
+
+<!--Banners de Informações-->
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <a class="card card-banner card-green-light">
+            <div class="card-body">
+                <i class="icon fa fa-group fa-4x"></i>
+                <div class="content">
+                    <div class="title">Inscritos</div>
+                    <div class="value"><span class="sign"></span>@Model.Inscritos</div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <a class="card card-banner card-blue-light">
+            <div class="card-body">
+                <i class="icon fa fa-check fa-4x"></i>
+                <div class="content">
+                    <div class="title">Aprovados</div>
+                    <div class="value"><span class="sign"></span>@Model.Aprovados.First().Value</div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <a class="card card-banner card-yellow-light">
+            <div class="card-body">
+                <i class="icon fa fa-graduation-cap fa-4x"></i>
+                <div class="content">
+                    <div class="title">Média Geral</div>
+                    <div class="value"><span class="sign"></span>@Model.MediaGeral.ToString("F1")</div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <a class="card card-banner card-green-light">
+            <div class="card-body">
+                <i class="icon fa fa-certificate fa-4x"></i>
+                <div class="content">
+                    <div class="title">Nota de Corte</div>
+                    <div class="value"><span class="sign"></span>@Model.NotaCorte.ToString("F1")</div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+<!--Gráfico 1 - Participantes-->
+<div class="row row-estatistica">
+    <!--Tabela do Gráfico-->
+    <div class="col-md-5">
+        <div class="card">
+
+            <table class="table table-striped" id="participantes">
+                <thead>
+                    <tr>
+                        <th>Participantes</th>
+                        <th>Qts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model.Participantes)
+                    {
+                        <tr>
+                            <td>@p.Key</td>
+                            <td class="qtd">@p.Value</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td class="total"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Gráfico-->
+    <div class="col-md-7 div-grafico">
+        <div class="card">
+            <div class="div-grafico-display" id="participantes-grafico"></div>
+        </div>
+    </div>
+</div>
+
+<!--Gráfico 2 - Público Alvo-->
+<div class="row row-estatistica">
+    <!--Tabela do Gráfico-->
+    <div class="col-md-5">
+        <div class="card">
+
+            <table class="table table-striped" id="publico">
+                <thead>
+                    <tr>
+                        <th>Público Alvo</th>
+                        <th>Qts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model.Publico)
+                    {
+                        <tr>
+                            <td>@p.Key</td>
+                            <td class="qtd">@p.Value</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td class="total"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Gráfico-->
+    <div class="col-md-7 div-grafico">
+        <div class="card">
+            <div class="div-grafico-display" id="publico-grafico"></div>
+        </div>
+    </div>
+</div>
+
+<!--Gráfico 3 - Presentes X Ausentes-->
+<div class="row row-estatistica">
+    <!--Tabela do Gráfico-->
+    <div class="col-md-5">
+        <div class="card">
+
+            <table class="table table-striped" id="presentes">
+                <thead>
+                    <tr>
+                        <th>Presentes X Ausentes</th>
+                        <th>Qts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model.Presentes)
+                    {
+                        <tr>
+                            <td>@p.Key</td>
+                            <td class="qtd">@p.Value</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td class="total"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Gráfico-->
+    <div class="col-md-7 div-grafico">
+        <div class="card">
+            <div class="div-grafico-display" id="presentes-grafico"></div>
+        </div>
+    </div>
+</div>
+
+<!--Gráfico 4 - Aprovados X Reprovados-->
+<div class="row row-estatistica">
+    <!--Tabela do Gráfico-->
+    <div class="col-md-5">
+        <div class="card">
+
+            <table class="table table-striped" id="aprovados">
+                <thead>
+                    <tr>
+                        <th>Aprovados X Reprovados</th>
+                        <th>Qts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model.Aprovados)
+                    {
+                        <tr>
+                            <td>@p.Key</td>
+                            <td class="qtd">@p.Value</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td class="total"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Gráfico-->
+    <div class="col-md-7 div-grafico">
+        <div class="card">
+            <div class="div-grafico-display" id="aprovados-grafico"></div>
+        </div>
+    </div>
+</div>
+
+<!--Gráfico 5 - Participantes X Aprovados-->
+<div class="row row-estatistica">
+    <!--Tabela do Gráfico-->
+    <div class="col-md-5">
+        <div class="card">
+
+            <table class="table table-striped" id="participantes-aprovados">
+                <thead>
+                    <tr>
+                        <th>Participantes Aprovados X Curso</th>
+                        <th>Qts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model.AprovadosXCursos)
+                    {
+                        <tr>
+                            <td>@p.Key</td>
+                            <td class="qtd">@p.Value</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td class="total"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Gráfico-->
+    <div class="col-md-7 div-grafico">
+        <div class="card">
+            <div class="div-grafico-display" id="participantes-aprovados-grafico"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/datatables.min.js"></script>
+
+    <script>
+
+        function drawChart() {
+            $('table').each(function (index) {
+                var col1 = $(this).find('th:nth-child(1)').html();
+                var col2 = $(this).find('th:nth-child(2)').html();
+                var tabela = this;
+                var total = 0;
+
+                // Carregar no gráfico
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', col1);
+                data.addColumn('number', col2);
+
+                $(tabela).find('td[class=qtd]').each(function () {
+                    var valueText = $(this).closest('tr').find('td:first').text();
+                    var valueQtd = parseInt($(this).html());
+                    data.addRow([valueText, valueQtd]);
+                    total += valueQtd;
+                });
+
+                $("<b>" + total + "</b>").appendTo($(tabela).find("td[class=total]"));
+                var title = $(tabela).find('thead > tr > th:first').text();
+                var options = {
+                    'title': title,
+                    'width': 680,
+                    'height': 300,
+                    'colors': ['#ED145D', '#000', '#fc2a70', '#d8044b', '#5e5e5e']
+                };
+                var container = $(tabela).closest('.card').closest('.row').find('.div-grafico').find('.div-grafico-display').attr('id');
+                var chart = new google.visualization.PieChart(document.getElementById(container));
+                chart.draw(data, options);
+
+            });
+        };
+
+
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+
+
+    </script>
+
+    <!-- Thiago -->
+    <script src="~/Scripts/Graficos/datatables.min.js"></script>
+    <script src="~/Scripts/Graficos/loader.js"></script>    
+    <script src="~/Scripts/Graficos/jsapi.js"></script>
+    <script src="~/Scripts/Graficos/graficos.js"></script>
+    <script src="~/Scripts/ViewModels/fabrica.js"></script>
+}

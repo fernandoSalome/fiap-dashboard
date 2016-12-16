@@ -1,0 +1,849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Fiap.RH.Sistema.Contratacao.Banco_1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aula">
+          <Key>
+            <PropertyRef Name="IdFabrica" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdFabrica" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Horas" Type="int" Nullable="false" />
+          <Property Name="Professor" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AvaliacaoComportamental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="JobCoach" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Video" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Redacao" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Linkedin" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Media" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="AderenciaJobCoach" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Candidato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Publico" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Residencial" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Celular" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Cv" Type="bit" Nullable="false" />
+          <Property Name="Confirmacao" Type="bit" Nullable="false" />
+          <Property Name="ProvaTecnica" Type="bit" Nullable="false" />
+          <Property Name="Nota" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Aprovado" Type="bit" Nullable="false" />
+          <Property Name="Rm" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="IdUnidade" Type="int" Nullable="false" />
+          <Property Name="IdFabrica" Type="int" Nullable="false" />
+          <Property Name="IdPerfilProfissional" Type="int" Nullable="false" />
+          <Property Name="IdCurso" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CandidatoAula">
+          <Key>
+            <PropertyRef Name="IdFabrica" />
+            <PropertyRef Name="IdAula" />
+            <PropertyRef Name="IdCandidato" />
+          </Key>
+          <Property Name="IdFabrica" Type="int" Nullable="false" />
+          <Property Name="IdAula" Type="int" Nullable="false" />
+          <Property Name="IdCandidato" Type="int" Nullable="false" />
+          <Property Name="Presenca" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fabrica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="NotaCorte" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Habilidade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PerfilProfissional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Relatorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Faltas" Type="int" Nullable="false" />
+          <Property Name="AderenciaComportamental" Type="int" Nullable="false" />
+          <Property Name="DesempenhoNota" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LoginId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelatorioHabilidade">
+          <Key>
+            <PropertyRef Name="IdRelatorio" />
+            <PropertyRef Name="IdOrdem" />
+          </Key>
+          <Property Name="IdRelatorio" Type="int" Nullable="false" />
+          <Property Name="IdHabilidade" Type="int" Nullable="false" />
+          <Property Name="IdOrdem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Unidade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Aula_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="Aula" Type="Self.Aula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aula">
+              <PropertyRef Name="IdFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvaliacaoComportamental_Candidato">
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="1" />
+          <End Role="AvaliacaoComportamental" Type="Self.AvaliacaoComportamental" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Candidato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvaliacaoComportamental">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_Curso">
+          <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="IdFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_Perfil">
+          <End Role="PerfilProfissional" Type="Self.PerfilProfissional" Multiplicity="1" />
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerfilProfissional">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="IdPerfilProfissional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_Relatorio">
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="1" />
+          <End Role="Relatorio" Type="Self.Relatorio" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Candidato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relatorio">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_Unidade">
+          <End Role="Unidade" Type="Self.Unidade" Multiplicity="1" />
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="IdUnidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidatoAula_Candidato">
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="1" />
+          <End Role="CandidatoAula" Type="Self.CandidatoAula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatoAula">
+              <PropertyRef Name="IdCandidato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FabricaAula">
+          <End Role="Aula" Type="Self.Aula" Multiplicity="1" />
+          <End Role="CandidatoAula" Type="Self.CandidatoAula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aula">
+              <PropertyRef Name="IdFabrica" />
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatoAula">
+              <PropertyRef Name="IdFabrica" />
+              <PropertyRef Name="IdAula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Relatorio_Login_Aprovacao">
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="Relatorio" Type="Self.Relatorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relatorio">
+              <PropertyRef Name="LoginId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelatorioHabilidade_Habilidade">
+          <End Role="Habilidade" Type="Self.Habilidade" Multiplicity="1" />
+          <End Role="RelatorioHabilidade" Type="Self.RelatorioHabilidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habilidade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RelatorioHabilidade">
+              <PropertyRef Name="IdHabilidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelatorioHabilidade_Relatorio">
+          <End Role="Relatorio" Type="Self.Relatorio" Multiplicity="1" />
+          <End Role="RelatorioHabilidade" Type="Self.RelatorioHabilidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relatorio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RelatorioHabilidade">
+              <PropertyRef Name="IdRelatorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FiapRHSistemaContratacaoBanco_1ModelStoreContainer">
+          <EntitySet Name="Aula" EntityType="Self.Aula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AvaliacaoComportamental" EntityType="Self.AvaliacaoComportamental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidato" EntityType="Self.Candidato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidatoAula" EntityType="Self.CandidatoAula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fabrica" EntityType="Self.Fabrica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Habilidade" EntityType="Self.Habilidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PerfilProfissional" EntityType="Self.PerfilProfissional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Relatorio" EntityType="Self.Relatorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelatorioHabilidade" EntityType="Self.RelatorioHabilidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unidade" EntityType="Self.Unidade" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Aula_Fabrica" Association="Self.FK_Aula_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabrica" />
+            <End Role="Aula" EntitySet="Aula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AvaliacaoComportamental_Candidato" Association="Self.FK_AvaliacaoComportamental_Candidato">
+            <End Role="Candidato" EntitySet="Candidato" />
+            <End Role="AvaliacaoComportamental" EntitySet="AvaliacaoComportamental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_Curso" Association="Self.FK_Candidato_Curso">
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_Fabrica" Association="Self.FK_Candidato_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabrica" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_Perfil" Association="Self.FK_Candidato_Perfil">
+            <End Role="PerfilProfissional" EntitySet="PerfilProfissional" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_Relatorio" Association="Self.FK_Candidato_Relatorio">
+            <End Role="Candidato" EntitySet="Candidato" />
+            <End Role="Relatorio" EntitySet="Relatorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_Unidade" Association="Self.FK_Candidato_Unidade">
+            <End Role="Unidade" EntitySet="Unidade" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidatoAula_Candidato" Association="Self.FK_CandidatoAula_Candidato">
+            <End Role="Candidato" EntitySet="Candidato" />
+            <End Role="CandidatoAula" EntitySet="CandidatoAula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FabricaAula" Association="Self.FK_FabricaAula">
+            <End Role="Aula" EntitySet="Aula" />
+            <End Role="CandidatoAula" EntitySet="CandidatoAula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Relatorio_Login_Aprovacao" Association="Self.FK_Relatorio_Login_Aprovacao">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Relatorio" EntitySet="Relatorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelatorioHabilidade_Habilidade" Association="Self.FK_RelatorioHabilidade_Habilidade">
+            <End Role="Habilidade" EntitySet="Habilidade" />
+            <End Role="RelatorioHabilidade" EntitySet="RelatorioHabilidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelatorioHabilidade_Relatorio" Association="Self.FK_RelatorioHabilidade_Relatorio">
+            <End Role="Relatorio" EntitySet="Relatorio" />
+            <End Role="RelatorioHabilidade" EntitySet="RelatorioHabilidade" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Fiap.RH.Sistema.Contratacao.Banco_1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Aula">
+          <Key>
+            <PropertyRef Name="IdFabrica" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdFabrica" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Horas" Type="Int32" Nullable="false" />
+          <Property Name="Professor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Fabrica" Relationship="Self.FK_Aula_Fabrica" FromRole="Aula" ToRole="Fabrica" />
+          <NavigationProperty Name="CandidatosAula" Relationship="Self.FK_FabricaAula" FromRole="Aula" ToRole="CandidatoAula" />
+        </EntityType>
+        <EntityType Name="AvaliacaoComportamental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobCoach" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Video" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Redacao" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Linkedin" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Media" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="AderenciaJobCoach" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Candidato" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_AvaliacaoComportamental_Candidato" FromRole="AvaliacaoComportamental" ToRole="Candidato" />
+        </EntityType>
+        <EntityType Name="CandidatoAula">
+          <Key>
+            <PropertyRef Name="IdFabrica" />
+            <PropertyRef Name="IdAula" />
+            <PropertyRef Name="IdCandidato" />
+          </Key>
+          <Property Name="IdFabrica" Type="Int32" Nullable="false" />
+          <Property Name="IdAula" Type="Int32" Nullable="false" />
+          <Property Name="IdCandidato" Type="Int32" Nullable="false" />
+          <Property Name="Presenca" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Aula" Relationship="Self.FK_FabricaAula" FromRole="CandidatoAula" ToRole="Aula" />
+          <NavigationProperty Name="Candidato" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_CandidatoAula_Candidato" FromRole="CandidatoAula" ToRole="Candidato" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Candidato" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Curso" FromRole="Curso" ToRole="Candidato" />
+        </EntityType>
+        <EntityType Name="Fabrica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Aula" Relationship="Self.FK_Aula_Fabrica" FromRole="Fabrica" ToRole="Aula" />
+          <Property Name="NotaCorte" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <NavigationProperty Name="Candidato" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Fabrica" FromRole="Fabrica" ToRole="Candidato" />
+        </EntityType>
+        <EntityType Name="Habilidade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RelatoriosHabilidade" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_RelatorioHabilidade_Habilidade" FromRole="Habilidade" ToRole="RelatorioHabilidade" />
+        </EntityType>
+        <EntityType Name="PerfilProfissional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Candidato" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Perfil" FromRole="PerfilProfissional" ToRole="Candidato" />
+        </EntityType>
+        <EntityType Name="Unidade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Candidato" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Unidade" FromRole="Unidade" ToRole="Candidato" />
+        </EntityType>
+        <Association Name="FK_Aula_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="Aula" Type="Self.Aula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aula">
+              <PropertyRef Name="IdFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FabricaAula">
+          <End Role="Aula" Type="Self.Aula" Multiplicity="1" />
+          <End Role="CandidatoAula" Type="Self.CandidatoAula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aula">
+              <PropertyRef Name="IdFabrica" />
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatoAula">
+              <PropertyRef Name="IdFabrica" />
+              <PropertyRef Name="IdAula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aula" EntityType="Self.Aula" />
+          <EntitySet Name="AvaliacaoComportamental" EntityType="Self.AvaliacaoComportamental" />
+          <EntitySet Name="CandidatoAula" EntityType="Self.CandidatoAula" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" />
+          <EntitySet Name="Fabrica" EntityType="Self.Fabrica" />
+          <EntitySet Name="Habilidade" EntityType="Self.Habilidade" />
+          <EntitySet Name="PerfilProfissional" EntityType="Self.PerfilProfissional" />
+          <EntitySet Name="Unidade" EntityType="Self.Unidade" />
+          <AssociationSet Name="FK_Aula_Fabrica" Association="Self.FK_Aula_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabrica" />
+            <End Role="Aula" EntitySet="Aula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FabricaAula" Association="Self.FK_FabricaAula">
+            <End Role="Aula" EntitySet="Aula" />
+            <End Role="CandidatoAula" EntitySet="CandidatoAula" />
+          </AssociationSet>
+          <EntitySet Name="RelatorioHabilidade" EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.RelatorioHabilidade" />
+          <AssociationSet Name="FK_RelatorioHabilidade_Habilidade" Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_RelatorioHabilidade_Habilidade">
+            <End Role="Habilidade" EntitySet="Habilidade" />
+            <End Role="RelatorioHabilidade" EntitySet="RelatorioHabilidade" />
+          </AssociationSet>
+          <EntitySet Name="Login" EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Login" />
+          <EntitySet Name="Relatorio" EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Relatorio" />
+          <AssociationSet Name="FK_Relatorio_Login_Aprovacao" Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Relatorio_Login_Aprovacao">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Relatorio" EntitySet="Relatorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelatorioHabilidade_Relatorio" Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_RelatorioHabilidade_Relatorio">
+            <End Role="Relatorio" EntitySet="Relatorio" />
+            <End Role="RelatorioHabilidade" EntitySet="RelatorioHabilidade" />
+          </AssociationSet>
+          <EntitySet Name="Candidato" EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Candidato" />
+          <AssociationSet Name="FK_AvaliacaoComportamental_Candidato" Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_AvaliacaoComportamental_Candidato">
+            <End Role="Candidato" EntitySet="Candidato" />
+            <End Role="AvaliacaoComportamental" EntitySet="AvaliacaoComportamental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_Curso" Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Curso">
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_Fabrica" Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabrica" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_Perfil" Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Perfil">
+            <End Role="PerfilProfissional" EntitySet="PerfilProfissional" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_Relatorio" Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Relatorio">
+            <End Role="Candidato" EntitySet="Candidato" />
+            <End Role="Relatorio" EntitySet="Relatorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidato_Unidade" Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Unidade">
+            <End Role="Unidade" EntitySet="Unidade" />
+            <End Role="Candidato" EntitySet="Candidato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidatoAula_Candidato" Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_CandidatoAula_Candidato">
+            <End Role="Candidato" EntitySet="Candidato" />
+            <End Role="CandidatoAula" EntitySet="CandidatoAula" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="RelatorioHabilidade">
+          <Key>
+            <PropertyRef Name="IdRelatorio" />
+            <PropertyRef Name="IdOrdem" />
+          </Key>
+          <Property Name="IdRelatorio" Type="Int32" Nullable="false" />
+          <Property Name="IdHabilidade" Type="Int32" Nullable="false" />
+          <Property Name="IdOrdem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Habilidade" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_RelatorioHabilidade_Habilidade" FromRole="RelatorioHabilidade" ToRole="Habilidade" />
+          <NavigationProperty Name="Relatorio" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_RelatorioHabilidade_Relatorio" FromRole="RelatorioHabilidade" ToRole="Relatorio" />
+        </EntityType>
+        <Association Name="FK_RelatorioHabilidade_Habilidade">
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Habilidade" Role="Habilidade" Multiplicity="1" />
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.RelatorioHabilidade" Role="RelatorioHabilidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habilidade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RelatorioHabilidade">
+              <PropertyRef Name="IdHabilidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Senha" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Relatorio" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Relatorio_Login_Aprovacao" FromRole="Login" ToRole="Relatorio" />
+        </EntityType>
+        <EntityType Name="Relatorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Faltas" Type="Int32" Nullable="false" />
+          <Property Name="AderenciaComportamental" Type="Int32" Nullable="false" />
+          <Property Name="DesempenhoNota" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LoginId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Login" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Relatorio_Login_Aprovacao" FromRole="Relatorio" ToRole="Login" />
+          <NavigationProperty Name="RelatorioHabilidades" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_RelatorioHabilidade_Relatorio" FromRole="Relatorio" ToRole="RelatorioHabilidade" />
+          <NavigationProperty Name="Candidato" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Relatorio" FromRole="Relatorio" ToRole="Candidato" />
+        </EntityType>
+        <Association Name="FK_Relatorio_Login_Aprovacao">
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Login" Role="Login" Multiplicity="1" />
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Relatorio" Role="Relatorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relatorio">
+              <PropertyRef Name="LoginId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelatorioHabilidade_Relatorio">
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Relatorio" Role="Relatorio" Multiplicity="1" />
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.RelatorioHabilidade" Role="RelatorioHabilidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Relatorio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RelatorioHabilidade">
+              <PropertyRef Name="IdRelatorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Candidato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Publico" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Residencial" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Celular" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Cv" Type="Boolean" Nullable="false" />
+          <Property Name="Confirmacao" Type="Boolean" Nullable="false" />
+          <Property Name="ProvaTecnica" Type="Boolean" Nullable="false" />
+          <Property Name="Nota" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="Aprovado" Type="Boolean" Nullable="false" />
+          <Property Name="Rm" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="IdUnidade" Type="Int32" Nullable="false" />
+          <Property Name="IdFabrica" Type="Int32" Nullable="false" />
+          <Property Name="IdPerfilProfissional" Type="Int32" Nullable="false" />
+          <Property Name="IdCurso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AvaliacaoComportamental" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_AvaliacaoComportamental_Candidato" FromRole="Candidato" ToRole="AvaliacaoComportamental" />
+          <NavigationProperty Name="Curso" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Curso" FromRole="Candidato" ToRole="Curso" />
+          <NavigationProperty Name="Fabrica" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Fabrica" FromRole="Candidato" ToRole="Fabrica" />
+          <NavigationProperty Name="PerfilProfissional" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Perfil" FromRole="Candidato" ToRole="PerfilProfissional" />
+          <NavigationProperty Name="Relatorio" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Relatorio" FromRole="Candidato" ToRole="Relatorio" />
+          <NavigationProperty Name="Unidade" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Unidade" FromRole="Candidato" ToRole="Unidade" />
+          <NavigationProperty Name="CandidatoAula" Relationship="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_CandidatoAula_Candidato" FromRole="Candidato" ToRole="CandidatoAula" />
+        </EntityType>
+        <Association Name="FK_AvaliacaoComportamental_Candidato">
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Candidato" Role="Candidato" Multiplicity="1" />
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.AvaliacaoComportamental" Role="AvaliacaoComportamental" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Candidato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvaliacaoComportamental">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_Curso">
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Curso" Role="Curso" Multiplicity="1" />
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Candidato" Role="Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_Fabrica">
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Fabrica" Role="Fabrica" Multiplicity="1" />
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Candidato" Role="Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="IdFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_Perfil">
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.PerfilProfissional" Role="PerfilProfissional" Multiplicity="1" />
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Candidato" Role="Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerfilProfissional">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="IdPerfilProfissional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_Relatorio">
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Candidato" Role="Candidato" Multiplicity="1" />
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Relatorio" Role="Relatorio" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Candidato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relatorio">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidato_Unidade">
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Unidade" Role="Unidade" Multiplicity="1" />
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Candidato" Role="Candidato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidato">
+              <PropertyRef Name="IdUnidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidatoAula_Candidato">
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.Candidato" Role="Candidato" Multiplicity="1" />
+          <End Type="Fiap.RH.Sistema.Contratacao.Banco_1Model.CandidatoAula" Role="CandidatoAula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatoAula">
+              <PropertyRef Name="IdCandidato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FiapRHSistemaContratacaoBanco_1ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Aula">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.Aula">
+              <MappingFragment StoreEntitySet="Aula">
+                <ScalarProperty Name="IdFabrica" ColumnName="IdFabrica" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Horas" ColumnName="Horas" />
+                <ScalarProperty Name="Professor" ColumnName="Professor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AvaliacaoComportamental">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.AvaliacaoComportamental">
+              <MappingFragment StoreEntitySet="AvaliacaoComportamental">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="JobCoach" ColumnName="JobCoach" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="Redacao" ColumnName="Redacao" />
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="AderenciaJobCoach" ColumnName="AderenciaJobCoach" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidatoAula">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.CandidatoAula">
+              <MappingFragment StoreEntitySet="CandidatoAula">
+                <ScalarProperty Name="IdFabrica" ColumnName="IdFabrica" />
+                <ScalarProperty Name="IdAula" ColumnName="IdAula" />
+                <ScalarProperty Name="IdCandidato" ColumnName="IdCandidato" />
+                <ScalarProperty Name="Presenca" ColumnName="Presenca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Curso">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.Curso">
+              <MappingFragment StoreEntitySet="Curso">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fabrica">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.Fabrica">
+              <MappingFragment StoreEntitySet="Fabrica">
+                <ScalarProperty Name="NotaCorte" ColumnName="NotaCorte" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Habilidade">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.Habilidade">
+              <MappingFragment StoreEntitySet="Habilidade">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PerfilProfissional">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.PerfilProfissional">
+              <MappingFragment StoreEntitySet="PerfilProfissional">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unidade">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.Unidade">
+              <MappingFragment StoreEntitySet="Unidade">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelatorioHabilidade">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.RelatorioHabilidade">
+              <MappingFragment StoreEntitySet="RelatorioHabilidade">
+                <ScalarProperty Name="IdOrdem" ColumnName="IdOrdem" />
+                <ScalarProperty Name="IdHabilidade" ColumnName="IdHabilidade" />
+                <ScalarProperty Name="IdRelatorio" ColumnName="IdRelatorio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Login">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Relatorio">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.Relatorio">
+              <MappingFragment StoreEntitySet="Relatorio">
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DesempenhoNota" ColumnName="DesempenhoNota" />
+                <ScalarProperty Name="AderenciaComportamental" ColumnName="AderenciaComportamental" />
+                <ScalarProperty Name="Faltas" ColumnName="Faltas" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidato">
+            <EntityTypeMapping TypeName="Fiap.RH.Sistema.Contratacao.Banco_1Model.Candidato">
+              <MappingFragment StoreEntitySet="Candidato">
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="IdPerfilProfissional" ColumnName="IdPerfilProfissional" />
+                <ScalarProperty Name="IdFabrica" ColumnName="IdFabrica" />
+                <ScalarProperty Name="IdUnidade" ColumnName="IdUnidade" />
+                <ScalarProperty Name="Rm" ColumnName="Rm" />
+                <ScalarProperty Name="Aprovado" ColumnName="Aprovado" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="ProvaTecnica" ColumnName="ProvaTecnica" />
+                <ScalarProperty Name="Confirmacao" ColumnName="Confirmacao" />
+                <ScalarProperty Name="Cv" ColumnName="Cv" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Residencial" ColumnName="Residencial" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Publico" ColumnName="Publico" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

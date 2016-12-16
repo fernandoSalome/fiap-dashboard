@@ -1,0 +1,14 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.RelatorioViewModel
+
+<div class="form-group">
+    @Html.LabelFor(r => r.AderenciaComportamental, new { @class = "control-label lead col-lg-3" })
+    @Html.TextBoxFor(r => r.AderenciaComportamental, new { @class = "form-control input-lg" })
+    @Html.ValidationMessageFor(r => r.AderenciaComportamental, "", new { @class = "text-warning" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(r => r.DesempenhoNota, new { @class = "control-label lead col-lg-3" })
+    @Html.TextBoxFor(r => r.DesempenhoNota, new { @class = "form-control input-lg" })
+    @Html.ValidationMessageFor(r => r.DesempenhoNota, "", new { @class = "text-warning" })
+</div>
+

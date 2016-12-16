@@ -1,0 +1,33 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.CursoViewModel
+
+@{
+    ViewBag.Title = "Editar Cursos";
+    ViewBag.TitleMenu = "Curso";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h2>Editar Cursos</h2>
+        </div>
+        <div class="card-body">
+
+            @using (Html.BeginForm("Cadastrar", "Curso", FormMethod.Post, new { @class = "form form-horizontal", id = "formularioCurso" }))
+            {
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Partial("_formulario", Model)
+                    </div>
+                </div>
+                    <div class="row">
+
+                        <div class="col-md-6" style="margin-top: 25px;">
+                            @Helper.Submit("Concluir", "btn btn-success")
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+</div>
+
+

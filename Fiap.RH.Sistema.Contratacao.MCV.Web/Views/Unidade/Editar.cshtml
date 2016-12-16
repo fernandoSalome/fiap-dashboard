@@ -1,0 +1,35 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.UnidadeViewModel
+
+@{
+    ViewBag.Title = "Cadastrar Unidade";
+    ViewBag.TitleMenu = "Unidades";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h2>Editar Unidade</h2>
+        </div>
+        <div class="card-body">
+
+            @Helper.Message(Model.Mensagem, "alert alert-warning")
+
+            @using (Html.BeginForm("Editar", "Unidade", FormMethod.Post, new { @class = "form form-horizontal", id = "formularioUnidade" }))
+            {
+                @Html.HiddenFor(u => u.Id)
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Partial("_formulario", Model)
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6" style="margin-top: 25px;">
+                        @Helper.Submit("Concluir", "btn btn-success")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>            
+

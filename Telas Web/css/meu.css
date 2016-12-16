@@ -1,0 +1,82 @@
+.sidebar-brand img{
+    height: 33px;
+}
+
+.navbar-brand img{
+    height: 28px;
+}
+
+.app-brand img{
+    height: 33px;
+}
+
+.info-fabricas{
+    list-style: none;
+    margin: 25px -35px;
+    font-size: 14px;
+}
+
+.table-edit button{
+    float: right;
+    margin: 10px;
+}
+
+/*Customising DataTables classes*/
+table.dataTable thead .sorting:last-child{
+	cursor: auto;
+}
+
+table.dataTable thead .sorting:last-child:after{
+ visibility: hidden !important;
+ content: " " !important;
+}
+
+.dataTables_info, .dataTables_paginate, .dataTables_filter, .dataTables_length{
+    padding: 15px 25px;
+}
+
+.dataTables_length{
+    margin-right: 55px;
+}
+
+.dataTables_wrapper .top{
+	right: 50px;
+}
+
+.dataTables_wrapper .top .dataTables_filter{
+	margin-right: 50px;
+}
+
+.dataTables_wrapper .top .dataTables_filter .form-control{
+    margin-left: 5px;
+}
+
+.extra-info tr{
+    line-height: 2px;
+}
+
+.extra-info tr td{
+    padding: 11px !important;
+}
+
+.extra-info tr > :first-child{
+    font-weight: bold;
+}
+
+.legenda{
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+/* Estatísticas */
+.input-edit{
+    width: 50px;
+}
+
+.row-estatistica{
+    display: flex;
+}
+
+.row-estatistica [class*='col-md']{
+    align-content: stretch;
+}

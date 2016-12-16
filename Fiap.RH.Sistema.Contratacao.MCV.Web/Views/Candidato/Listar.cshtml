@@ -1,0 +1,87 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.CandidatoViewModel
+
+@{
+    ViewBag.Title = "Listar Candidatos";
+}
+
+<h2>Listar Candidatos</h2>
+
+@Helper.Message(Model.Mensagem, "alert alert-success")
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Sexo</th>
+            <th>Email</th>
+            <th>Tel. Residencial</th>
+            <th>Celular</th>
+            <th>CV</th>
+            <th>Confirmação</th>
+            <th>Prova Técnica</th>
+            <th>Nota</th>
+            <th>RM</th>
+            <th>Unidade</th>
+            <th>Fabrica</th>
+            <th>Curso</th>
+            <th>Perfil Profissional</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tabela">
+       @Html.Partial("_tabela",Model.Candidatos)
+    </tbody>
+</table>
+
+<div>
+    <a class="btn btn-primary" href="/Candidato/Cadastrar">Adicionar</a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                Realmente deseja apagar o candidato?
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("Excluir", "Candidato"))
+                {
+                    <input type="hidden" id="candidatoId" name="candidatoId" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-danger">Sim</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        function someBotao() {
+            //Esconder os botões de ações da tabela
+            $("td > button, td > a").css("visibility", "hidden");
+
+            //Quando o mouse passar por cima da linha, exibe os botões
+            $("tr").hover(function () {
+                $(this).find("button,a").css("visibility", "visible");
+            }, function () {
+                $(this).find("button,a").css("visibility", "hidden");
+            });
+        }
+        $().ready(function () {
+            someBotao();
+
+            //Selecionar o Select da busca de grupos
+            $("#IdBusca").change(function () {
+                //seleciona o formulário e faz o submit
+                $("#formularioBusca").submit();
+            });
+        });
+    </script>
+}

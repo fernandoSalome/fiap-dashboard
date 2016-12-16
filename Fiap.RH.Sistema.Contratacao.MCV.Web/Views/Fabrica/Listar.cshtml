@@ -1,0 +1,79 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.FabricaViewModel
+
+@{
+    ViewBag.Title = "Listar Fábricas";
+    ViewBag.TitleMenu = "Fábrica";
+}
+
+<div class="col-xs-12">
+    <div class="card">
+        <div class="card-header" style="padding: 10px 20px; flex-direction: column;">
+            <span style="font-size: 28px;">Fábricas</span>
+            <!--ActionLink para cadastrar fábricas-->
+            @Html.ActionLink("Cadastrar Fábrica", "Cadastrar", "Fabrica", new { @class = "btn btn-xs btn-primary" })
+        </div>
+        <div class="card-body no-padding">
+
+            @Helper.Message(Model.Mensagem, "alert alert-warning")
+            <table class="datatable table table-striped primary" cellspacing="0" width="100%" id="FabricaTable">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Nota de Corte</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var fabrica in Model.Fabricas)
+                    {
+                        <tr>
+                            <td>@fabrica.Nome</td>
+                            <td>@fabrica.NotaCorte</td>
+                            <td>
+                                <a href="/Fabrica/VerEstatisticas/@fabrica.Id" class="btn btn-info btn-xs"><i class="fa fa-bar-chart"></i></a>
+                                <a href="/Fabrica/Editar/@fabrica.Id" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @section scripts
+{
+        <script>
+            $(document).ready(function () {
+                var oTable = $('#FabricaTable').dataTable({
+                    "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [0] }
+                    ],
+                    "aaSorting": [[1, 'asc']],
+                    "dom": '<"top"fl>rt<"bottom"ip><"clear">',
+                    "language": {
+                        "sEmptyTable": "Nenhum registro encontrado",
+                        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                        "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sInfoThousands": ".",
+                        "sLengthMenu": "_MENU_ resultados por página",
+                        "sLoadingRecords": "Carregando...",
+                        "sProcessing": "Processando...",
+                        "sZeroRecords": "Nenhum registro encontrado",
+                        "sSearch": "Pesquisar",
+                        "oPaginate": {
+                            "sNext": "Próximo",
+                            "sPrevious": "Anterior",
+                            "sFirst": "Primeiro",
+                            "sLast": "Último"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Ordenar colunas de forma ascendente",
+                            "sSortDescending": ": Ordenar colunas de forma descendente"
+                        }
+                    }
+                });
+            })
+        </script>
+    }

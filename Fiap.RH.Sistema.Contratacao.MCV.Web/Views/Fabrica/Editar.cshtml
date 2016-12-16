@@ -1,0 +1,39 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.FabricaViewModel
+
+@{
+    ViewBag.Title = "Editar Fábrica";
+    ViewBag.TitleMenu = "Fábrica";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h2>Cadastrar Fábrica</h2>
+        </div>
+        <div class="card-body">
+
+            @Helper.Message(Model.Mensagem, "alert alert-warning")
+
+            @Helper.Message("Aviso: mudar a nota de corte remove relatórios individuais e avaliações comportamentais dos reprovados, bem como a chamada das aulas!", "alert alert-danger")
+
+            @using (Html.BeginForm("Editar", "Fabrica", FormMethod.Post, new { @class = "form form-horizontal", id = "formularioFabrica" }))
+            {
+                @Html.HiddenFor(f => f.Id)
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Partial("_formulario", Model)
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6" style="margin-top: 25px;">
+                        @Helper.Submit("Concluir", "btn btn-success")
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+            
+

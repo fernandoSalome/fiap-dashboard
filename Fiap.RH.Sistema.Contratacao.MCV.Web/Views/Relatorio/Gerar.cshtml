@@ -1,0 +1,111 @@
+﻿@model Fiap.RH.Sistema.Contratacao.Dominio.Relatorio
+
+@{
+    ViewBag.Title = "Gerar";
+}
+
+@Helper.Message(ViewBag.Mensagem, "alert alert-warning")
+
+<h1>@Model.Candidato.Nome</h1>
+
+<section id="relatorio">
+    <div class="row">
+        <div class="col-lg-3">Número do Candidato</div>
+        <div class="col-lg-3">@Model.Candidato.Id</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Curso</div>
+        <div class="col-lg-3">@Model.Candidato.Curso.Nome</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Unidade</div>
+        <div class="col-lg-3">@Model.Candidato.Unidade.Nome</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Total de Faltas</div>
+        <div class="col-lg-3">@Model.Faltas</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Aderência Comportamental</div>
+        <div class="col-lg-3">@Model.AderenciaComportamental%</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Perfil Profissional</div>
+        <div class="col-lg-3">@Model.Candidato.PerfilProfissional.Descricao</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">Desempenho da Nota</div>
+        <div class="col-lg-3">@Model.DesempenhoNota</div>
+    </div>
+
+    <hr />
+
+    <!-- Habilidades Mostrar no máximo 5! -->
+    <div class="row">
+        <div class="col-lg-3">Habilidades Principais</div>
+        <div class="col-lg-3">
+            @if (Model.RelatorioHabilidades.Count > 5)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    <div class="row">@Model.RelatorioHabilidades.ElementAt(@i).Habilidade.Nome</div>
+                }
+            }
+            else
+            {
+                foreach (var h in Model.RelatorioHabilidades)
+                {
+                    <div class="row">@h.Habilidade.Nome</div>
+                }
+            }
+        </div>
+    </div>
+
+    <hr />
+
+    <!-- Status -->
+    <div class="row">
+        <div class="col-lg-3">Status</div>
+        <div class="col-lg-2">@Model.Status</div>
+        <div class="col-lg-3">Status registrado por: @Model.Login.Nome, @Model.Login.Email</div>
+        <div class="col-lg-4">
+            @if (Model.Status == "Aprovado")
+            {
+                using (Html.BeginForm("Reprovar", "Relatorio", FormMethod.Post, new { @class = "form form-horizontal", id = "formularioReprovar" }))
+                {
+                    @Html.HiddenFor(r => r.Id)
+                    @Helper.Submit("Alterar para Reprovado", "btn btn-danger")
+                }
+            }
+            else if (Model.Status == "Reprovado")
+            {
+                using (Html.BeginForm("Aprovar", "Relatorio", FormMethod.Post, new { @class = "form", id = "formularioAprovar" }))
+                {
+                    @Html.HiddenFor(r => r.Id)
+                    @Helper.Submit("Alterar para Aprovado", "btn btn-primary")
+                }
+            }
+            else
+            {
+                <div class="col-lg-6">
+                    @using (Html.BeginForm("Aprovar", "Relatorio", FormMethod.Post, new { @class = "form", id = "formularioAprovar" }))
+                    {
+                        @Html.HiddenFor(r => r.Id)
+                        @Helper.Submit("Aprovar", "btn btn-lg btn-primary")
+                    }
+                </div>
+                <div class="col-lg-6">
+                    @using (Html.BeginForm("Reprovar", "Relatorio", FormMethod.Post, new { @class = "form", id = "formularioReprovar" }))
+                    {
+                        @Html.HiddenFor(r => r.Id)
+                        @Helper.Submit("Reprovar", "btn btn-lg btn-danger")
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <a class="btn btn-primary" href="/Relatorio/Editar/@Model.Id">Editar Relatório</a>
+    </div>
+</section>

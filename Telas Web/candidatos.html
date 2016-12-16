@@ -1,0 +1,354 @@
+<!--Colocar no _Layout-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flat Admin V.3 - Free flat-design bootstrap administrator templates</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="css/flat-admin.css">
+    <link rel="stylesheet" type="text/css" href="css/meu.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.12/datatables.min.css" />
+
+    <script>
+        /* Formating function for row details */
+        function fnFormatDetails(oTable, nTr) {
+            var aData = oTable.fnGetData(nTr);
+            var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;" class="extra-info">';
+            sOut += '<tr><td>Email:</td><td>' + aData[1] + ' ' + aData[4] + '</td></tr>';
+            sOut += '<tr><td>Telefone Residencial:</td><td>Could provide a link here</td></tr>';
+            sOut += '<tr><td>Telefone Celular:</td><td>And any further details here (images etc)</td></tr>';
+            sOut += '<tr><td>RM:</td><td>And any further details here (images etc)</td></tr>';
+            sOut += '<tr><td>Unidade:</td><td>And any further details here (images etc)</td></tr>';
+            sOut += '<tr><td>Fábrica:</td><td>And any further details here (images etc)</td></tr>';
+            sOut += '<tr><td>Curso:</td><td>And any further details here (images etc)</td></tr>';
+            sOut += '</table>';
+
+            return sOut;
+        }
+
+        $(document).ready(function () {
+            /*
+             * Insert a 'details' column to the table
+             */
+            var nCloneTh = document.createElement('th');
+            var nCloneTd = document.createElement('td');
+            nCloneTd.innerHTML = '<img src="images/arrow-right.png">';
+            nCloneTd.className = "center";
+
+            $('#FabricaTable thead tr').each(function () {
+                this.insertBefore(nCloneTh, this.childNodes[0]);
+            });
+
+            $('#FabricaTable tbody tr').each(function () {
+                this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
+            });
+
+            /*
+             * Initialse DataTables, with no sorting on the 'details' column
+             */
+            var oTable = $('#FabricaTable').dataTable({
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [0] }
+                ],
+                "aaSorting": [[1, 'asc']],
+                "dom": '<"top"fl>rt<"bottom"<"legenda"> ip><"clear">',
+                "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                }
+            });
+
+            $("div.legenda").html('<b>Legenda:</b><br/><b>P.T:</b> Prova Técnica &nbsp;&nbsp;&nbsp;&nbsp;<b>P.P:</b> Perfil Profissional&nbsp;&nbsp;&nbsp;&nbsp;<b>A.C:</b> Avaliação Comportamental');
+
+            /* Add event listener for opening and closing details
+             * Note that the indicator for showing which row is open is not controlled by DataTables,
+             * rather it is done here
+             */
+            $('#FabricaTable tbody td img').on('click', function () {
+                var nTr = $(this).parents('tr')[0];
+                if (oTable.fnIsOpen(nTr)) {
+                    /* This row is already open - close it */
+                    this.src = "images/arrow-right.png";
+                    $(this).alert();
+                    oTable.fnClose(nTr);
+
+                }
+                else {
+                    /* Open this row */
+                    this.src = "images/arrow-down.png";
+                    oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
+                }
+            });
+        });
+    </script>
+
+
+
+
+</head>
+<body>
+
+    <div class="app app-default">
+        <aside class="app-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a class="sidebar-brand" href="#"><img src="images/FiapLogo.png" /></a>
+
+                <button type="button" class="sidebar-toggle">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-menu">
+                <ul class="sidebar-nav">
+                    <li class="">
+                        <a href="../index.html">
+                            <div class="icon">
+                                <i class="fa fa-tasks" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Dashboard</div>
+                        </a>
+                    </li>
+                    <li class="@@menu.messaging">
+                        <a href="../messaging.html">
+                            <div class="icon">
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Messaging</div>
+                        </a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <div class="icon">
+                                <i class="fa fa-cube" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">UI Kits</div>
+                        </a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> UI Kits</li>
+                                <li><a href="../uikits/customize.html">Customize</a></li>
+                                <li><a href="../uikits/components.html">Components</a></li>
+                                <li><a href="../uikits/card.html">Card</a></li>
+                                <li><a href="../uikits/form.html">Form</a></li>
+                                <li><a href="../uikits/table.html">Table</a></li>
+                                <li><a href="../uikits/icons.html">Icons</a></li>
+                                <li class="line"></li>
+                                <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Advanced Components</li>
+                                <li><a href="../uikits/pricing-table.html">Pricing Table</a></li>
+                                <!-- <li><a href="../uikits/timeline.html">Timeline</a></li> -->
+                                <li><a href="../uikits/chart.html">Chart</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <div class="icon">
+                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Pages</div>
+                        </a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Admin</li>
+                                <li><a href="../pages/form.html">Form</a></li>
+                                <li><a href="../pages/profile.html">Profile</a></li>
+                                <li><a href="../pages/search.html">Search</a></li>
+                                <li class="line"></li>
+                                <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Landing</li>
+                                <!-- <li><a href="../pages/landing.html">Landing</a></li> -->
+                                <li><a href="../pages/login.html">Login</a></li>
+                                <li><a href="../pages/register.html">Register</a></li>
+                                <!-- <li><a href="../pages/404.html">404</a></li> -->
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+            </div>
+        </aside>
+        <script type="text/ng-template" id="sidebar-dropdown.tpl.html">
+            <div class="dropdown-background">
+                <div class="bg"></div>
+            </div>
+            <div class="dropdown-container">
+                {{list}}
+            </div>
+        </script>
+        <div class="app-container">
+            <nav class="navbar navbar-default" id="navbar">
+                <div class="container-fluid">
+                    <div class="navbar-collapse collapse in">
+                        <ul class="nav navbar-nav navbar-mobile">
+                            <li>
+                                <button type="button" class="sidebar-toggle">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </li>
+                            <li class="logo">
+                                <a class="navbar-brand" href="#"><img src="images/FiapLogo.png" /></a>
+                            </li>
+                            <li>
+                                <button type="button" class="navbar-toggle">
+                                    <img class="profile-img" src="images/profile.png">
+                                </button>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="navbar-title"><span class="highlight">Candidatos</span></li>
+                            <li class="navbar-search hidden-sm">
+                                <input id="search" type="text" placeholder="Search..">
+                                <button class="btn-search"><i class="fa fa-search"></i></button>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown profile">
+                                <a href="/html/pages/profile.html" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img class="profile-img" src="images/profile.png">
+                                    <div class="title">Profile</div>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="profile-info">
+                                        <h4 class="username">Scott White</h4>
+                                    </div>
+                                    <ul class="action">
+                                        <li>
+                                            <a href="#">
+                                                Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="badge badge-danger pull-right">5</span>
+                                                My Inbox
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Setting
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!--Fim _Layout-->
+            <!--Tabela-->
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-header" style="padding: 10px 20px; flex-direction: column;">
+                            <span style="font-size: 28px;">Candidatos</span>
+                            <!--ActionLink para cadastrar fábricas-->
+                            <button class="btn btn-primary btn-xs" style="margin-top: 10px;">Novo Candidato</button>
+                        </div>
+                        <div class="card-body no-padding">
+                            <table class="table table-striped" cellspacing="0" width="100%" id="FabricaTable">
+                                <thead>
+                                    <tr>
+                                        <!--Atributos de Fábrica - Header -->
+                                        <th>#</th>
+                                        <th>Nome</th>
+                                        <th>Público</th>
+                                        <th>CV</th> <!-- Realizar um if para colocar icons (checked /cross)-->
+                                        <th>Confirmação</th> <!-- Realizar um if para colocar icons (checked /cross)-->
+                                        <th>P.T.</th> <!-- Realizar um if para colocar icons (checked /cross)-->
+                                        <th>Status</th> <!-- Realizar um if para colocar icons (checked /cross)-->
+                                        <th>P.P.</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!--Atributos de Fábrica - Body
+                                        Acrescentar foreach-->
+                                        <td>1</td>
+                                        <td>@item.Nome</td>
+                                        <td>@item.publico</td>
+                                        <td>@item.Id</td>
+                                        <td>@item.Id</td>
+                                        <td>@item.Id</td>
+                                        <td>@item.Id</td>
+                                        <td>@item.Id</td>
+                                        <!--Opções -->
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-gear" style="font-size: 20px;"></i></button>
+                                                <ul class="dropdown-menu" role="menu" style="min-width:60px; left: -55px;">
+                                                    <li><a href="#">Editar</a></li>
+                                                    <li><a href="#">Remover</a></li>
+                                                    <li><a href="#">A.C.</a></li>
+                                                    <li><a href="#">Relatório</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <!--Atributos de Fábrica - Body
+                                        Acrescentar foreach-->
+                                        <td>1</td>
+                                        <td>@item.Nome</td>
+                                        <td>@item.publico</td>
+                                        <td>@item.Id</td>
+                                        <td>@item.Id</td>
+                                        <td>@item.Id</td>
+                                        <td>@item.Id</td>
+                                        <td>@item.Id</td>
+                                        <!--Opções -->
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-gear" style="font-size: 20px;"></i></button>
+                                                <ul class="dropdown-menu" role="menu" style="min-width:60px; left: -55px;">
+                                                    <li><a href="#">Editar</a></li>
+                                                    <li><a href="#">Remover</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/vendor.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/datatables.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+
+</body>
+</html>

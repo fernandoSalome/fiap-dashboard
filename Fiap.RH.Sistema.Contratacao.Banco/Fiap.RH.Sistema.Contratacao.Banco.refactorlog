@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="626c2a45-ccd8-4ab3-b0a2-19ae95e6d193" ChangeDateTime="12/04/2016 23:34:03">
+    <Property Name="ElementName" Value="[dbo].[CandidatoAula].[IdFabrica]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CandidatoAula]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdFabricaAula" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f144002d-7f48-46bb-9e5e-c91de0df1fa1" ChangeDateTime="12/12/2016 22:58:26">
+    <Property Name="ElementName" Value="[dbo].[RelatorioHabilidade].[IdPrioridade]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RelatorioHabilidade]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdForca" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6e87dce9-4038-4549-92e0-303f34112e82" ChangeDateTime="12/12/2016 22:59:56">
+    <Property Name="ElementName" Value="[dbo].[RelatorioHabilidade].[IdForca]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RelatorioHabilidade]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Observacao" />
+  </Operation>
+</Operations>

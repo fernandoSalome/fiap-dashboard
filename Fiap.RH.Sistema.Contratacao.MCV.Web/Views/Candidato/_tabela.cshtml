@@ -1,0 +1,29 @@
+﻿@model List<Fiap.RH.Sistema.Contratacao.Dominio.Candidato>
+@foreach (var item in Model)
+{
+<tr id="@item.Id">
+        <td>@item.Nome</td>
+        <td>@(item.Publico ? "Masculino" : "Feminino")</td>
+        <td>@item.Email</td>
+        <td>@item.Residencial</td>
+        <td>@item.Celular</td>
+        <td>@item.Cv</td>
+        <td>@item.Confirmacao</td>
+        <td>@item.ProvaTecnica</td>
+        <td>@item.Nota</td>
+        <td>@item.Rm</td>
+        <td>@item.Unidade.Nome</td>
+        <td>@item.Fabrica.Nome</td>
+        <td>@item.Curso.Nome</td>
+        <td>@item.PerfilProfissional.Descricao</td>
+        <td><a class="btn btn-default" href="/Candidato/Editar/@item.Id"><i class="glyphicon glyphicon-edit"></i></a></td>
+        <td><button onclick="candidatoId.value = @item.Id" type="button" class="btn btn-danger " data-toggle="modal" data-target="#myModal">
+    Excluir
+</button></td>
+    </tr>
+}
+
+@if (Request.IsAjaxRequest())
+{
+    <script>someBotao();</script>
+}

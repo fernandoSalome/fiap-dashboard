@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Fabrica]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(10, 10), 
+    [Nome] VARCHAR(100) NOT NULL, 
+    [NotaCorte] NUMERIC(4, 2) NOT NULL
+)

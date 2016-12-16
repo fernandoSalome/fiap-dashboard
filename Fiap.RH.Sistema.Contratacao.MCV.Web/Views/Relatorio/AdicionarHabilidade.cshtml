@@ -1,0 +1,22 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.RelatorioViewModel
+
+@{
+    ViewBag.Title = "AdicionarHabilidade";
+}
+
+<h1>@Model.Candidato.Nome</h1>
+
+<h2>Adicionar habilidade ao relatório</h2>
+
+@using(Html.BeginForm("AdicionarHabilidade", "Relatorio", FormMethod.Post, new { @class = "form", id = "adicionarHabilidade" }))
+{
+    @Html.HiddenFor(r => r.Id)
+    
+    @Html.LabelFor(r => r.NovaHabilidadeId, new { @class = "control-label col-lg-2" })
+    @Html.DropDownListFor(r => r.NovaHabilidadeId, Model.Habilidades, "Selecione uma habilidade", new { @class = "form-control"})
+    @Html.ValidationMessageFor(r => r.NovaHabilidadeId, "", new { @class = "text-warning"})
+
+    @Helper.Submit("Adicionar", "btn btn-primary")
+}
+
+

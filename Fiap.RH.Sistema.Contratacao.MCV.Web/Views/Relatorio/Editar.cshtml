@@ -1,0 +1,29 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.RelatorioViewModel
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+@Helper.Message(Model.Mensagem, "alert alert-warning")
+@Helper.Message(ViewBag.Mensagem, "alert alert-warning")
+
+<h1>@Model.Candidato.Nome</h1>
+
+<h2>Habilidades</h2>
+
+@Html.Partial("_habilidades")
+
+<hr />
+
+@using(Html.BeginForm("Editar", "Relatorio", FormMethod.Post, new { @class = "form", id = "formularioRelatorio" }))
+{
+    @Html.HiddenFor(r => r.Id)
+    @Html.Partial("_formulario")
+    <div class="col-lg-3"></div>
+    @Helper.Submit("Concluir", "btn btn-primary")
+}
+
+@section scripts
+{
+    <script src="~/Scripts/ViewModels/relatorio.js"></script>
+}

@@ -1,0 +1,594 @@
+<!--Colocar no _Layout-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flat Admin V.3 - Free flat-design bootstrap administrator templates</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="css/flat-admin.css">
+    <link rel="stylesheet" type="text/css" href="css/meu.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+</head>
+<body>
+    <div class="app app-default">
+        <aside class="app-sidebar" id="sidebar" style="position:fixed;">
+            <div class="sidebar-header">
+                <a class="sidebar-brand" href="#"><img src="images/FiapLogo.png" /></a>
+
+                <button type="button" class="sidebar-toggle">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-menu">
+                <ul class="sidebar-nav">
+                    <!--Dados gerais-->
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <div class="icon">
+                                <i class="fa fa-tasks" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Dados Gerais</div>
+                        </a>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li class="section"><i class="fa fa-file-o" aria-hidden="true"></i> Dados Gerais</li>
+                                <li><a href="#">Cursos</a></li>
+                                <li><a href="#">Habilidades</a></li>
+                                <li><a href="#">Perfis Profissionais</a></li>
+                                <li><a href="#">Unidades</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!--Fábricas-->
+                    <li class="@@menu.messaging">
+                        <a href="../messaging.html">
+                            <div class="icon">
+                                <i class="fa fa-cubes" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Fábricas</div>
+                        </a>
+                    </li>
+                    <!--Estatísticas-->
+                    <li class="@@menu.messaging">
+                        <a href="../messaging.html">
+                            <div class="icon">
+                                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Estatísticas</div>
+                        </a>
+                    </li>
+                    <!--Candidatos-->
+                    <li class="@@menu.messaging">
+                        <a href="../messaging.html">
+                            <div class="icon">
+                                <i class="fa fa-group" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Candidatos</div>
+                        </a>
+                    </li>
+                    <!--Aulas-->
+                    <li class="@@menu.messaging">
+                        <a href="../messaging.html">
+                            <div class="icon">
+                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="title">Aulas</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--Footer Sidebar-->
+            <div class="sidebar-footer">
+            </div>
+        </aside>
+        <script type="text/ng-template" id="sidebar-dropdown.tpl.html">
+            <div class="dropdown-background">
+                <div class="bg"></div>
+            </div>
+            <div class="dropdown-container">
+                {{list}}
+            </div>
+        </script>
+        <div class="app-container">
+            <nav class="navbar navbar-default" id="navbar">
+                <div class="container-fluid">
+                    <div class="navbar-collapse collapse in">
+                        <ul class="nav navbar-nav navbar-mobile">
+                            <li>
+                                <button type="button" class="sidebar-toggle">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </li>
+                            <li class="logo">
+                                <a class="navbar-brand" href="#"><span class="highlight">Flat v3</span> Admin</a>
+                            </li>
+                            <li>
+                                <button type="button" class="navbar-toggle">
+                                    <img class="profile-img" src="images/profile.png">
+                                </button>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="navbar-title"><span class="highlight">Estatísticas</span></li>
+                            <li class="navbar-search hidden-sm">
+                                <input id="search" type="text" placeholder="Search..">
+                                <button class="btn-search"><i class="fa fa-search"></i></button>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown profile">
+                                <a href="/html/pages/profile.html" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img class="profile-img" src="images/profile.png">
+                                    <div class="title">Profile</div>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="profile-info">
+                                        <h4 class="username">Scott White</h4>
+                                    </div>
+                                    <ul class="action">
+                                        <li>
+                                            <a href="#">
+                                                Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="badge badge-danger pull-right">5</span>
+                                                My Inbox
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Setting
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!--Fim _Layout-->
+            <!--Tabela-->
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-header" style="padding: 10px 20px; flex-direction: column;">
+                            <h2>Estatísticas</h2>
+                        </div>
+                        <div class="card-body">
+                            <h3>Fábrica de Desenvolvedores 2016</h3> <!--Nome da fábrica (@item.Nome)-->
+                            <!--Informações da fábrica-->
+                            <ul class="info-fabricas">
+                                <li>Data: </li>
+                                <li>Professor(es): </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--Banners de Informações-->
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <a class="card card-banner card-green-light">
+                        <div class="card-body">
+                            <i class="icon fa fa-group fa-4x"></i>
+                            <div class="content">
+                                <div class="title">Inscritos</div>
+                                <div class="value"><span class="sign"></span>120</div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <a class="card card-banner card-blue-light">
+                        <div class="card-body">
+                            <i class="icon fa fa-check fa-4x"></i>
+                            <div class="content">
+                                <div class="title">Aprovados</div>
+                                <div class="value"><span class="sign"></span>27</div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <a class="card card-banner card-yellow-light">
+                        <div class="card-body">
+                            <i class="icon fa fa-graduation-cap fa-4x"></i>
+                            <div class="content">
+                                <div class="title">Média Geral</div>
+                                <div class="value"><span class="sign"></span>5,8</div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+				<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <a class="card card-banner card-green-light">
+                        <div class="card-body">
+                            <i class="icon fa fa-certificate fa-4x"></i>
+                            <div class="content">
+                                <div class="title">Nota de Corte</div>
+                                <div class="value"><span class="sign"></span>6,0</div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!--Gráfico 1 - Participantes-->
+            <div class="row row-estatistica">
+                <!--Tabela do Gráfico-->
+                <div class="col-md-5">
+                    <div class="card">
+
+                        <div class="table-edit">
+                            <button class="btn btn-primary btn-xs EditarTabela"><i class="glyphicon glyphicon-cog"></i></button>
+                            <button class="btn btn-success btn-xs SalvarTabela" style="visibility: hidden;">Salvar Alterações</button>
+                        </div>
+
+                        <table class="table table-striped" id="Table1">
+                            <thead>
+                                <tr>
+                                    <th>Participantes</th>
+                                    <th>Qts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Análise e Desenvolvimento de Sistemas</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Banco de Dados</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Engenharia da Computação</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Jogos Digitais</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Sistema de Informação</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Sistema para Internet</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Técnico para informática - MD</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Técnico para informática - COPI</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>0</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--Gráfico-->
+                <div class="col-md-7 div-grafico">
+                    <div class="card">
+                        <div class="div-grafico-display" id="Chart1"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Gráfico 2 - Público Alvo-->
+            <div class="row">
+                <!--Tabela do Gráfico-->
+                <div class="col-md-5">
+                    <div class="card">
+
+                        <div class="table-edit">
+                            <button class="btn btn-primary btn-xs EditarTabela"><i class="glyphicon glyphicon-cog"></i></button>
+                            <button class="btn btn-success btn-xs SalvarTabela" style="visibility: hidden;">Salvar Alterações</button>
+                        </div>
+
+                        <table class="table table-striped" id="Table2">
+                            <thead>
+                                <tr>
+                                    <th>Público Alvo</th>
+                                    <th>Qts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Masculino</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Feminino</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>0</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--Gráfico-->
+                <div class="col-md-7 div-grafico">
+                    <div class="card">
+                        <div class="div-grafico-display" id="Chart2"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Gráfico 3 - Presentes X Ausentes-->
+            <div class="row">
+                <!--Tabela do Gráfico-->
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="table-edit">
+                            <button class="btn btn-primary btn-xs EditarTabela"><i class="glyphicon glyphicon-cog"></i></button>
+                            <button class="btn btn-success btn-xs SalvarTabela" style="visibility: hidden;">Salvar Alterações</button>
+                        </div>
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Presentes X Ausentes</th>
+                                    <th>Qts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Presentes</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Ausentes</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>0</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--Gráfico-->
+                <div class="col-md-7 div-grafico">
+                    <div class="card">
+                        <div class="div-grafico-display" id="Chart3"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Gráfico 4 - Aprovados X Reprovados-->
+            <div class="row">
+                <!--Tabela do Gráfico-->
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="table-edit">
+                            <button class="btn btn-primary btn-xs EditarTabela"><i class="glyphicon glyphicon-cog"></i></button>
+                            <button class="btn btn-success btn-xs SalvarTabela" style="visibility: hidden;">Salvar Alterações</button>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Aprovados X Reprovados</th>
+                                    <th>Qts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Aprovados</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Reprovados</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>0</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--Gráfico-->
+                <div class="col-md-7 div-grafico">
+                    <div class="card">
+                        <div class="div-grafico-display" id="Chart4"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Gráfico 5 - Participantes X Aprovados-->
+            <div class="row">
+                <!--Tabela do Gráfico-->
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="table-edit">
+                            <button class="btn btn-primary btn-xs EditarTabela"><i class="glyphicon glyphicon-cog"></i></button>
+                            <button class="btn btn-success btn-xs SalvarTabela" style="visibility: hidden;">Salvar Alterações</button>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Participantes</th>
+                                    <th>Qts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Análise e Desenvolvimento de Sistemas</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Banco de Dados</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Engenharia da Computação</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Jogos Digitais</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Sistema de Informação</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Sistema para Internet</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Técnico para informática - MD</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Técnico para informática - COPI</td>
+                                    <td class="qtd">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>0</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--Gráfico-->
+                <div class="col-md-7 div-grafico">
+                    <div class="card">
+                        <div class="div-grafico-display" id="Chart5"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/vendor.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/datatables.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <!--Meu Script - Edit/Update Graph-->
+    <script>
+        $('.EditarTabela').click(function EditarTabela() {
+            // Achar a tabela mais próxima
+            $(this).closest('.card').find('table');
+            // Disabilitar o botão de editar
+            $(this).attr("disabled", true);
+            // Habilitar o botão de salvar
+            $(this).closest('.table-edit').find(".SalvarTabela").css("visibility", "visible");
+            // Colocar <input> dentro das <td> e remover os valores
+            var tds = $(this).closest('.table-edit').siblings('table').find('td[class=qtd]');
+            tds.empty();
+            $('<input class="input-edit" type="number" value="0" name="qtd"/>').appendTo(tds);
+
+        });
+
+        //Botão Salvar
+        $('.SalvarTabela').click(function SalvarTabela() {
+            // Achar a tabela mais próxima
+            var tabela = $(this).closest('.card').find('table');
+            // Disabilitar o botão de editar
+            $(this).css("visibility", "hidden");
+            // Habilitar o botão de salvar
+            $(this).closest('.table-edit').find(".EditarTabela").attr("disabled", false);
+            // Recuperar os valores modificados e atualizar a tabela
+            var valor;
+            var total = 0;
+            $('td[class=qtd] > input').each(function () {
+                valor = parseInt($(this).val());
+                $(this).parent().text(valor);
+                $(this).remove();
+                total += valor;
+            })
+            // Exibir no <th> do Total
+
+            $(tabela).find('th:last()').text(total);
+            
+            var col1 = $(tabela).find('th:nth-child(1)').html();
+            var col2 = $(tabela).find('th:nth-child(2)').html();
+			
+            // Carregar no Chart
+            var data2 = new google.visualization.DataTable();
+            data2.addColumn('string', col1);
+            data2.addColumn('number', col2);
+            [$(tabela).find('td[class=qtd]').each(function () {                
+                data2.addRow([$(this).closest('tr').find('td:first').text(), parseInt($(this).text())]);
+            })];
+
+            var title = $(this).parents('.table-edit').siblings('table').find('th:first').text();
+            var options = {
+                'title': title,
+                'width': 680,
+                'height': 300,
+                'colors': ['#ED145D', '#000', '#fc2a70', '#d8044b', '#5e5e5e']
+            };
+            var container = $(this).parents('.card').parents('.row').find('.div-grafico').find('.div-grafico-display').attr('id');
+            var chart = new google.visualization.PieChart(document.getElementById(container));
+            chart.draw(data2, options);
+        });
+
+
+        //Charts & Graphs
+        //Chart 1
+
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart() {
+
+            // Set chart options
+            var options = {
+                'title': $('Teste'),
+                'width': 600,
+                'height': 300
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            //var chart = new google.visualization.PieChart(document.getElementById('Chart2'));
+            //chart.draw(data, options);
+        }
+    </script>
+
+</body>
+</html>

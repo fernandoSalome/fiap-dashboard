@@ -1,0 +1,35 @@
+﻿@model Fiap.RH.Sistema.Contratacao.MCV.Web.ViewModels.FabricaViewModel
+
+@{
+    ViewBag.Title = "Cadastrar Fábrica";
+    ViewBag.TitleMenu = "Fábrica";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h2>Cadastrar Fábrica</h2>
+        </div>
+        <div class="card-body">
+
+
+            @Helper.Message(Model.Mensagem, "alert alert-warning")
+
+            @using (Html.BeginForm("Cadastrar", "Fabrica", FormMethod.Post, new { @class = "form form-horizontal", id = "formularioFabrica" }))
+            {
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Partial("_formulario", Model)
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6" style="margin-top: 25px;">
+                        @Helper.Submit("Adicionar", "btn btn-success")
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

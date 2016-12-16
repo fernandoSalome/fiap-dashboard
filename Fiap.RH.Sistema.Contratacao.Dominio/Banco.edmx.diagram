@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd4076b7999149d7ba9aeacf36b66fcd" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Aula" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.AvaliacaoComportamental" Width="2.25" PointX="0.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.CandidatoAula" Width="2.5" PointX="4.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Curso" Width="1.5" PointX="0.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Fabrica" Width="1.5" PointX="0.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Habilidade" Width="1.875" PointX="4.375" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.PerfilProfissional" Width="1.5" PointX="8.375" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Unidade" Width="1.5" PointX="8.375" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Aula_Fabrica" ManuallyRouted="false" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_FabricaAula" ManuallyRouted="false" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.RelatorioHabilidade" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.RelatorioHabilidade" Width="2.375" PointX="8" PointY="9.5" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_RelatorioHabilidade_Habilidade" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Login" Width="2.5" PointX="11.75" PointY="6.5" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Relatorio" Width="2.375" PointX="8" PointY="6.125" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Relatorio_Login_Aprovacao" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_RelatorioHabilidade_Relatorio" />
+        <EntityTypeShape EntityType="Fiap.RH.Sistema.Contratacao.Banco_1Model.Candidato" Width="3" PointX="3.875" PointY="3.625" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_AvaliacaoComportamental_Candidato" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Curso" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Fabrica" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Perfil" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Relatorio" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_Candidato_Unidade" />
+        <AssociationConnector Association="Fiap.RH.Sistema.Contratacao.Banco_1Model.FK_CandidatoAula_Candidato" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
